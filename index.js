@@ -12,6 +12,7 @@ import roleRoutes from './src/routes/RoleRoutes';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config();
 
 // mongoose connection
@@ -22,6 +23,7 @@ mongoose.connect(process.env.DB, {
     })
     //bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors())
 app.use(bodyParser.json());
 
 departmentRoutes(app);

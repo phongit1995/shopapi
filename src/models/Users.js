@@ -3,22 +3,36 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const UsersSchema = new Schema({
-    fullName: String,
-    imgPath: String,
+    fullname: String,
+    image: {
+        type:String,
+        default:"https://i.ibb.co/T1ZFNt4/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
+    },
     pin: String,
+    email:{
+        type:String
+    },
+    phone:{
+        type:String
+    },
     dob: Date,
+    job:{
+        default:"SINH VIEN",
+        type:String
+    },
     homeAddress: String,
     grossSalary: Number,
     netSalary: Number,
     note: String,
-    departmentId: Number,
+    department: {
+        type:String
+    },
     roleId: {
         type:Number,
         default:1
     },
-    createAt: { type: Date, default: Date.now },
     isDisable: {
         type: Boolean,
         default: false
     }
-});
+},{timestamps:true});
