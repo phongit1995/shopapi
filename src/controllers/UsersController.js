@@ -11,7 +11,7 @@ export const AddNewUser = (req, res) => {
     })
 }
 export const GetUsers = (req, res) => {
-    Users.find({}, (err, user) => {
+    Users.find().sort({createdAt:-1}).then((err,user)=>{
         if (err) {
             res.send(err)
         }
