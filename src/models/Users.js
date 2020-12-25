@@ -27,6 +27,10 @@ export const UsersSchema = new Schema({
     department: {
         type:String
     },
+    password:{
+        type:String,
+        default:"admin"
+    },
     roleId: {
         type:Number,
         default:1
