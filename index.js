@@ -1,7 +1,9 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+dotenv.config();
 const app = express();
-const PORT = 5000;
-
+const PORT = process.env.PORT||5000;
 import departmentRoutes from './src/routes/DepartmentRoutes';
 import userRoutes from './src/routes/UserRoutes';
 import shiftRoutes from './src/routes/ShiftRoutes';
@@ -11,9 +13,7 @@ import roleRoutes from './src/routes/RoleRoutes';
 
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import cors from 'cors';
-dotenv.config();
+
 
 // mongoose connection
 mongoose.Promise = global.Promise;
