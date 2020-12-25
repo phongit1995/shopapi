@@ -45,7 +45,7 @@ export const DeleteUser = (req, res) => {
 export const LoginUser= async (req,res)=>{
     const user = await Users.findOne({email:req.body.email,password:req.body.password});
     if(user){
-        return res.json({ message: "SUCCESS" })
+        return res.json({ message: "SUCCESS" ,data:user })
     }
     return res.json({ message: "ERROR" })
 }
