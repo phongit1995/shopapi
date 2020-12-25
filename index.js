@@ -23,7 +23,8 @@ mongoose.connect(process.env.DB, {
     })
     //bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors())
+app.use(cors());
+app.options('*', cors())
 app.use(bodyParser.json());
 
 departmentRoutes(app);
