@@ -1,4 +1,4 @@
-import { AddNewAttendance, GetAttendances, GetAttendanceWithId, UpdateAttendance, DeleteAttendance } from '../controllers/AttendancesController';
+import { AddNewAttendance, GetAttendances, GetAttendanceWithId, UpdateAttendance, DeleteAttendance ,CheckOut} from '../controllers/AttendancesController';
 
 const routes = (app) => {
     app.route('/attendances')
@@ -8,6 +8,9 @@ const routes = (app) => {
         .get(GetAttendanceWithId)
         .put(UpdateAttendance)
         .delete(DeleteAttendance);
+    app.route('/attendances/checkOut/:id').post(CheckOut);
+
+    
 }
 
 export default routes;

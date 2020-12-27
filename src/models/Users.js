@@ -33,7 +33,7 @@ export const UsersSchema = new Schema({
     },
     roleId: {
         type:Number,
-        default:1
+        default:0
     },
     isDisable: {
         type: Boolean,
