@@ -13,9 +13,17 @@ export const AddNewAttendance = (req, res) => {
     })
 }
 export const GetAttendances = (req, res) => {
-    Attendances.find({}).populate({
-        path:"user"
-    }).then((value)=>res.json(value)).catch(error=>res.send(error))
+    if(req.query.id){
+        Attendances.find({user:req.query.id}).populate({
+            path:"user"
+        }).sort({createdAt:-1}).then((value)=>res.json(value)).catch(error=>res.send(error))
+    }
+    else {
+        Attendances.find({}).populate({
+            path:"user"
+        }).sort({createdAt:-1}).then((value)=>res.json(value)).catch(error=>res.send(error))
+    }
+
 }
 export const GetAttendanceWithId = (req, res) => {
     Attendances.findById(req.params.attendanceId, (err, attendance) => {
