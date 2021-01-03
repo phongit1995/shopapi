@@ -25,13 +25,21 @@ export const GetAttendances = (req, res) => {
     }
 
 }
+export const GetAttendancesSalary = (req, res) => {
+    if(req.query.id){
+        Attendances.find({user:req.query.id,checkOut:{$exists:true}}).populate({
+            path:"user"
+        }).sort({createdAt:-1}).then((value)=>res.json(value)).catch(error=>res.send(error))
+    }
+    else {
+        Attendances.find({checkOut:{$exists:true}}).populate({
+            path:"user"
+        }).sort({createdAt:-1}).then((value)=>res.json(value)).catch(error=>res.send(error))
+    }
+
+}
 export const GetAttendanceWithId = (req, res) => {
-    Attendances.findById(req.params.attendanceId, (err, attendance) => {
-        if (err) {
-            res.send(err)
-        }
-        res.json(attendance)
-    })
+    Attendances.findById(req.params.attendanceId).populate({path:"user"}).then(result=>res.json(result)).catch((error)=>res.send(error))
 }
 export const UpdateAttendance = (req, res) => {
     Attendances.findOneAndUpdate({ _id: req.params.attendanceId }, req.body, { new: true, useFindAndModify: false }, (err, attendance) => {

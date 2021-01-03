@@ -20,6 +20,10 @@ export const UsersSchema = new Schema({
         default:"SINH VIEN",
         type:String
     },
+    salary:{
+        type:Number,
+        default:0
+    },
     homeAddress: String,
     grossSalary: Number,
     netSalary: Number,
